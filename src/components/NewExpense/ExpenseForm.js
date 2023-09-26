@@ -15,10 +15,14 @@ const [userInput, setUserInput] = useState({
 
   const titleChangeHandler = (event) => {
    // setEnteredTitle(event.target.value);
-    setUserInput({
-      ...userInput,
-      enteredTitle: event.target.value,
-    })
+  //  setUserInput({
+  //    ...userInput,
+  //    enteredTitle: event.target.value,
+  //  });
+// Abaixo na linha 24, encontra-se uma terceira alternativa de alteração de estado, para esclarecimentos conferir aula 76: Updating state that depends on the previous state.
+  setUserInput((prevState) => {
+    return { ...prevState, enteredTitle: event.target.value };
+  });
   };
 
   const amountChangeHandler = (event) => {
@@ -26,7 +30,7 @@ const [userInput, setUserInput] = useState({
     setUserInput({
       ...userInput,
       enteredAmount: event.target.value,
-    })
+    });
   };
 
   const dateChangeHandler = event => {
@@ -34,7 +38,7 @@ const [userInput, setUserInput] = useState({
     setUserInput({
       ...userInput,
       enteredDate: event.target.value,
-    })
+    });
   };
 
   return (
